@@ -1,5 +1,5 @@
 require "spec_helper"
-require '../lib/prime_finder'
+require 'prime_finder'
 
 describe "Test" do
   it "should find prime_finder with the upper bound given" do
