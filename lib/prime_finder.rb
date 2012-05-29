@@ -40,10 +40,8 @@ class PrimeFinder
       puts ("USAGE: ruby prime_finder.rb <upper bound>")
       puts ("EXAMPLE: ruby prime_finder.rb 30")
     else
-      if ARGV.size == 1 && ARGV[0].to_i != 0
-        upper_bound = ARGV[0].to_i
-        puts finder.find_prime(upper_bound)
-      end
+      upper_bound = ARGV[0].to_i
+      puts finder.find_prime(upper_bound)
     end
   end
 end
