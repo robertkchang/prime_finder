@@ -7,7 +7,7 @@ class PrimeFinder
 
     sqrt_upper = (Math.sqrt upper_bound).round
     working_arr = Array.new(upper_bound) {|e| e =  false}
-    return_arr = Array[]
+    return_arr = []
 
     (2 .. sqrt_upper).each { |m|
       if !working_arr[m]
