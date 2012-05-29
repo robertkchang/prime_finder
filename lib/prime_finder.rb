@@ -9,7 +9,7 @@ class PrimeFinder
     working_arr = Array.new(upper_bound) {|e| e =  false}
     return_arr = Array[]
 
-    for m in 2 .. sqrt_upper
+    (2 .. sqrt_upper).each { |m|
       if !working_arr[m]
         return_arr << m
         k = m * m
@@ -18,13 +18,13 @@ class PrimeFinder
           k += m
         end
       end
-    end
+    }
 
-    for n in sqrt_upper+1 .. upper_bound
+    (sqrt_upper+1 .. upper_bound).each { |n|
       if !working_arr[n]
         return_arr << n
       end
-    end
+    }
 
     return_arr
 
@@ -34,15 +34,16 @@ class PrimeFinder
   # Main #
   ########
 
-  finder = PrimeFinder.new
-
-  if ARGV.size == 0
-    puts ("USAGE: ruby prime_finder.rb <upper bound>")
-    puts ("EXAMPLE: ruby prime_finder.rb 30")
-  else
-    if ARGV.size == 1 && ARGV[0].to_i != 0
-      upper_bound = ARGV[0].to_i
-      puts finder.find_prime(upper_bound)
+  if $0 == __FILE__
+    finder = PrimeFinder.new
+    if ARGV.size == 0
+      puts ("USAGE: ruby prime_finder.rb <upper bound>")
+      puts ("EXAMPLE: ruby prime_finder.rb 30")
+    else
+      if ARGV.size == 1 && ARGV[0].to_i != 0
+        upper_bound = ARGV[0].to_i
+        puts finder.find_prime(upper_bound)
+      end
     end
   end
 end
