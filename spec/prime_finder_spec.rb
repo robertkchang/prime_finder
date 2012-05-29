@@ -2,7 +2,7 @@ require "spec_helper"
 require '../lib/prime_finder'
 
 describe "Test" do
-  it "should find prime with the upper bound given" do
+  it "should find prime_finder with the upper bound given" do
     upper_bound = 10
     return_arr = Array[2,3,5,7,9]
     finder = PrimeFinder.new
@@ -10,7 +10,7 @@ describe "Test" do
     finder.find_prime(upper_bound)
   end
 
-  it "should return an array of prime numbers from find_prime" do
+  it "should return an array of prime_finder numbers from find_prime" do
     upper_bound = 10
     return_arr = Array[2,3,5,7,9]
     finder = PrimeFinder.new
@@ -24,7 +24,7 @@ describe "Test" do
     finder.find_prime(upper_bound).class.should eql Array
   end
 
-  it "should return an array with the correct prime numbers from find_prime" do
+  it "should return an array with the correct prime_finder numbers from find_prime" do
     upper_bound = 10
     finder = PrimeFinder.new
     return_arr = finder.find_prime(upper_bound)

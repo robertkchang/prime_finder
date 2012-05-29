@@ -1,5 +1,5 @@
 #
-# Uses the Sieve of Eratosthenes algorithm to find the prime numbers given an upper bound
+# Uses the Sieve of Eratosthenes algorithm to find the prime_finder numbers given an upper bound
 #
 class PrimeFinder
 
@@ -37,8 +37,8 @@ class PrimeFinder
   finder = PrimeFinder.new
 
   if ARGV.size == 0
-    puts ("USAGE: ruby prime.rb <upper bound>")
-    puts ("EXAMPLE: ruby prime.rb 30")
+    puts ("USAGE: ruby prime_finder.rb <upper bound>")
+    puts ("EXAMPLE: ruby prime_finder.rb 30")
   else
     if ARGV.size == 1 && ARGV[0].to_i != 0
       upper_bound = ARGV[0].to_i
