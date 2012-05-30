@@ -3,7 +3,19 @@
 #
 class PrimeFinder
 
-  def find_prime (upper_bound)
+  def find_primes *bounds
+
+    if bounds.size==0 || bounds.size > 2
+      raise "Either specify a lower bound and upper bound OR just the upper bound."
+    end
+
+    if bounds.size == 1
+      lower_bound = 2
+      upper_bound = bounds[0]
+    else
+      lower_bound = bounds[0]
+      upper_bound = bounds[1]
+    end
 
     sqrt_upper = (Math.sqrt upper_bound).round
     working_arr = Array.new(upper_bound) {|e| e =  false}
@@ -11,7 +23,11 @@ class PrimeFinder
 
     (2 .. sqrt_upper).each { |m|
       if !working_arr[m]
-        return_arr << m
+
+        if m >= lower_bound
+          return_arr << m
+        end
+
         k = m * m
         while k <= upper_bound
           working_arr[k] = true
@@ -21,7 +37,7 @@ class PrimeFinder
     }
 
     (sqrt_upper+1 .. upper_bound).each { |n|
-      if !working_arr[n]
+      if !working_arr[n] && n >= lower_bound
         return_arr << n
       end
     }
@@ -37,11 +53,13 @@ class PrimeFinder
   if $0 == __FILE__
     finder = PrimeFinder.new
     if ARGV.size == 0
-      puts ("USAGE: ruby prime_finder.rb <upper bound>")
-      puts ("EXAMPLE: ruby prime_finder.rb 30")
+      puts "USAGE: ruby prime_finder.rb <lower bound> <upper bound>"
+      puts "OR: ruby prime_finder.rb <upper bound>"
+      puts "EXAMPLE: ruby prime_finder.rb 30"
+      puts "EXAMPLE: ruby prime_finder.rb 2 30"
     else
-      upper_bound = ARGV[0].to_i
-      puts finder.find_prime(upper_bound)
+      bounds = ARGV[0,(ARGV.length)].collect{|i| i.to_i}
+      puts finder.find_primes *bounds
     end
   end
 end
