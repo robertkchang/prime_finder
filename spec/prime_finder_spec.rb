@@ -95,4 +95,21 @@ describe "Test" do
     return_arr.size.should eql 0
   end
 
+  it "should return an array with given lower bound/upper bound value if given value IS a prime number" do
+    lower_bound = 2
+    upper_bound = 2
+    finder = PrimeFinder.new
+    return_arr = finder.find_primes lower_bound, upper_bound
+    return_arr.size.should eql 1
+    return_arr[0].should eql 2
+  end
+
+  it "should return an empty array if lower bound and upper bound are same and it is NOT a prime number" do
+    lower_bound = 4
+    upper_bound = 4
+    finder = PrimeFinder.new
+    return_arr = finder.find_primes lower_bound, upper_bound
+    return_arr.size.should eql 0
+  end
+
 end
